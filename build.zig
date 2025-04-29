@@ -4,13 +4,13 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const lib_mod = b.createModule(.{
+    const lib_mod = b.addModule("cudarw", .{
         .root_source_file = b.path("src/root.zig"),
         .target = target,
         .optimize = optimize,
     });
 
-    const cudaz_dep = b.dependency("cudaz", .{ .optimize = .ReleaseSmall , .target = target });
+    const cudaz_dep = b.dependency("cudaz", .{ .optimize = optimize, .target = target });
     const cudaz_module = cudaz_dep.module("cudaz");
 
     lib_mod.addImport("cudaz", cudaz_module);

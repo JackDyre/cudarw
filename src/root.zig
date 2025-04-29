@@ -29,7 +29,7 @@ pub fn CudaRw(comptime T: type) type {
             self.lock.lock();
 
             if (self.host_slice) |slice| self.allocator.free(slice);
-            _ = if (self.device_slice) |slice| Cuda.Device.free(slice.device_ptr);
+            if (self.device_slice) |slice| Cuda.Device.free(slice.device_ptr) catch @panic("unable to free memory");
 
             self.lock.unlock();
         }

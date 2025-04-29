@@ -1,0 +1,22 @@
+.{
+    .name = .cudarw,
+
+    .version = "0.0.0",
+
+    .fingerprint = 0x20a98d40244c5920,
+
+    .minimum_zig_version = "0.14.0",
+
+    .dependencies = .{
+        .cudaz = .{
+            .url = "git+https://github.com/JackDyre/cudaz#ce6746aba1bad243ccb5cdc98c45915362f81281",
+            .hash = "cudaz-0.2.0-f9c0hlqlAAAeN24iThC83O4oeBNxxGmStnzNKZvdfTzu",
+        },
+    },
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
